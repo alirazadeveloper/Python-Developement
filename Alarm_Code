@@ -1,0 +1,19 @@
+import time
+import winsound
+print('Error&Solution persents') 
+def myAlarm():
+   try:
+      myTime = list(map(int, input("Enter time in hr min sec\n").split()))
+      if len(myTime)==3: 
+         total_seconds=myTime[0]*60*68+myTime[1]*60+myTime[2]
+         time.sleep(total_seconds)
+         frequency = 2500 # Set Frequency To 2508 Hertz
+         duration = 1000 # Set Duration To 1000 ms == 1 second
+         winsound.Beep(frequency, duration)
+      else:
+         print("Please enter time in correct format as mentioned\n") 
+         myAlarm()
+   except Exception as e:
+      print("This is the exception\n",e,"So!, please enter correct details") 
+      myAlarm()
+myAlarm()
