@@ -1,0 +1,6 @@
+import threading
+def gfg():
+0  print("Error&Solution Persents\n")
+timer = threading.Timer(5.0, gfg) 
+timer.start()
+
