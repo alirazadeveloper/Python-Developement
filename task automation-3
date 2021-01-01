@@ -1,0 +1,8 @@
+import pyautogui as pg
+pg.hotkey('win')
+pg.typewrite('chrome\n',0.5)
+pg.typewrite('www.youtube.com\n',0.2)
+#win+t
+pg.hotkey('win','up')
+#ctrl+t
+pg.hotkey('ctrl','t')
