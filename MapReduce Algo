@@ -1,0 +1,25 @@
+
+# below is an implemantation of map reduce algorithm
+
+data = """In Afghanistan, seven policemen killed and six others
+injured during clashes in checkpoints in two Northern provinces.
+According to Afghan's official sources, four police were killed and two
+injured after clashes erupted in Dahan-e-Larkhab Police checkpoint in
+Dushi district of Baghlan province. Three policemen lost their lives and
+four others injured during clashes in Bandar-e-Yangiqala town in Khawaja
+Bahwuddin district of Takhar province."""
+
+def maper():
+    wordlist=data.split()
+    for w in wordlist:
+        print('<',w,',', 1,'>')     
+    return wordlist
+def reducer(wordlist):
+    reduceDict={}
+    for key in wordlist:
+        if key in reduceDict.keys():
+            reduceDict[key]+=1
+        else:
+            reduceDict[key]=1
+    return reduceDict  
+print(reducer(maper()))
