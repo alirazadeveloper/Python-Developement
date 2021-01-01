@@ -1,0 +1,12 @@
+import pyautogui as pg
+#print(pg.size())
+#print(pg.position())
+#pg.moveTo(1317,20,0.2)
+#pg.click(button='left')
+# pg.click(pg.moveTo(1317,20,0.2))
+# pg.typewrite('www.youtube.com\n',0.2)
+# pg.moveTo(1317,200,0.2)
+
+#pg.alert("this is alrt")
+#pg.confirm()
+pg.prompt("enter")
