@@ -1,0 +1,130 @@
+#Predicting Fraud Job Vacancies with 99% Accuracy using Natural Language Processing in Python
+# Given how important job vacancy is, it can’t be help that many people tries to create a fraud using job vacancy.
+#  Therefore, it is best for a job vacancy’s site to have some sort of algorithms to detect a fraud job vacancy. 
+#  One of them is using Natural Language Processing to automatically detect fraud job vacancy. 
+#  This story will give a step-by-step worked-example on how to create a simple natural language processing 
+#  in order to predict fraud job vacancy.
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sb
+
+df = pd.read_csv(r"fake_job_postings.csv")
+#df.profile_report()
+#pip uninstall profile_report                                       soon
+
+
+
+# Some key points that is observed is:
+# a. Job id is uniform and only an identification of job vacancy
+# b. Some salary range is written in range, some in the value, and some is missing. However, there are very many different range.
+# c. Company profile and Description is text data.
+# d. Categorical data like employment type, required education, and required experience have many missing values
+# e. Fraudulent is unbalanced, the percentage of real job vacancy and fake job vacancy is 20:1
+
+
+# Exploratory Data Analysis
+# Next, the percentage of fraud job vacancy among categorical variables will be observed. 
+# Matplotlib and seaborn will be used to plot the results. To see whether missing data has a 
+# bigger/lower percentage of fraud data job, missing categorical data will first be imputed with new class, “missing_columns”
+
+sb.set()
+
+for column in df.columns:
+    df[column]=df[column].fillna(f'missing_{column}')
+#print(df)
+
+
+#1-Telecommuting
+
+# seri=df.groupby('telecommuting').mean()['fraudulent']
+# plt.title('telecommuting')
+# plt.xlabel('index')
+# plt.ylabel('percentage of fraudulent')
+# plt.bar(np.array(seri.index,dtype='str'),seri)
+# plt.show()
+
+#As observed, Job that allowing telecommuting (work from home) is almost 2x more probable to be fraud.
+
+#2-Company Logo
+
+# seri=df.groupby('has_company_logo').mean()['fraudulent']
+# plt.title('has_company_logo')
+# plt.xlabel('index')
+# plt.ylabel('percentage of fraudulent')
+# plt.bar(np.array(seri.index,dtype='str'),seri)
+# plt.show()
+
+#A job vacancy without company logo is 8x more probable to be a fraud job vacancy.
+
+
+#3-Has Question
+# seri=df.groupby('has_questions').mean()['fraudulent']
+# plt.title('has_questions')
+# plt.xlabel('index')
+# plt.ylabel('percentage of fraudulent')
+# plt.bar(np.array(seri.index,dtype='str'),seri)
+# plt.show()
+
+#Job vacancy without question is 3x more probable to be a fraud.
+
+#4-Employment Type
+
+# seri=df.groupby('employment_type').mean()['fraudulent']
+# plt.title('employment_type')
+# plt.xlabel('index')
+# plt.ylabel('percentage of fraudulent')
+# plt.bar(np.array(seri.index,dtype='str'),seri)
+# plt.show()
+
+# Part-time job has a very high percentage of being fraud, almost 10%. Meanwhile,
+#  job vacancies that didn’t specify the employment type being the employment type with second highest fraud’s percentage
+
+
+#5. Required Education
+
+# seri=df.groupby('required_education').mean()['fraudulent']
+# for k,ind in enumerate(np.array(seri.index,dtype='str')):
+#     print(f'index {k+1}: {ind}',end=", ")
+# plt.figure(figsize=(20,8))
+# plt.title('required_education')
+# plt.xlabel('index')
+# plt.ylabel('percentage of fraudulent')
+# plt.xticks(np.arange(1,len(seri)+1,1))
+# plt.bar(np.arange(1,len(seri)+1,1),seri)
+# plt.show()
+
+# A shocking observation shows that index 9 (Some High School Coursework) has a very high percentage,
+#  about 70%, of data with index 9 is fraud job posting. Meanwhile, certification is also high, about 10%.
+
+#6. Salary Range
+#There are very many different range of salary. Hence, the median of the salary range will be extracted.
+
+# val = df['salary_range'].copy()
+# for k,value in enumerate(val):
+#     if isinstance(value,str) and "-" in value: 
+#         #only changes data that is only in range
+#         min_max=value.split('-')
+#         try:
+#             minimum=int(min_max[0])
+#             maximum=int(min_max[1])
+#             #find the median
+#             val[k]=(minimum+maximum)/2
+#         except ValueError:
+#             print(value,end=';')
+#             #check if there is data with "-" but not range
+#             val[k]="strange_salary_range"
+# df['salary_range']=val
+
+#There exist data with strange value, hence the name will be assigned as “strange salary_range”. Next, the boxplot of median of salary will be shown.
+
+
+
+
+
+
+
+
+
+
