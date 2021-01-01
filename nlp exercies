@@ -1,0 +1,22 @@
+
+# n=int(input("Enter a number:"))
+# print("# found!") if n%3==0 and n%5!=0 else print("# not found!")
+
+# x = lambda n : print("# found!") if n%3==0 and n%5!=0 else print("# not found!")
+# x(int(input("Enter a number:")))
+
+
+#list Defination
+nums = [12, 4, 11, 23, 18, 41, 27]
+#logic
+k = 0
+#while loop Start
+while k < len(nums) and nums[k] != 18:
+    k = k + 1 
+#Print Result
+print(k)
+print(list(range(3)))
+n = 3
+for x in [2, 5, 8]:     
+    n = n + x 
+print (n) 
