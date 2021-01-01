@@ -1,0 +1,8 @@
+#below python code is for compiler construction
+
+langdict={'*' : 'Op_multiply','/' : 'Op_divide','%' : 'Op_mod','+' : 'Op_add','-' : 'Op_subtract','<' : 'Op_lessthan','>' : 'Op_greaterthan','=' : 'Op_assignment','<=': 'Op_lessequal','>=': 'Op_greaterequal','==': 'Op_equal','!=': 'Op_notequal','<<' : 'Op_insertion','>>' : 'Op_insertion','++' : 'Op_increment','--' : 'Op_decrement','(' : 'LeftParen',')' : 'RightParen','{' : 'LeftBrace','[' : 'LeftSqureBrace',']' : 'RightSqureBrace','}' : 'RightBrace',';' : 'Semicolon',',' : 'Comma','"' : 'Quotationsmarks','#' : 'HashSymbol','//' : 'coments','if' : 'Keyword_if','else' : 'Keyword_else','while' : 'Keyword_while','for' : 'Keyword_For','int' : 'integer','float' : 'Floating_point','double' : 'long_Floating_point','char' : 'Character','bool' : 'Boolean','string' : 'String','cout' : 'object_Standard_Output_Stream','cin' : 'object_istream'}
+data = open("sourcecode.txt", "r");tokenlist=[]
+[tokenlist.append(l) for line in data for l in line.split()]
+print(tokenlist)
+print('Lexemes\t\tTokens')
+[print(tok,"\t\t",langdict[tok]) if tok in langdict.keys() else print(tok,"\t\t",'Identifire') for tok in tokenlist]
