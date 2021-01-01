@@ -1,0 +1,47 @@
+#below python script is for some machine leanring algos implementation 
+
+# Impelementation of LinearRegresstion
+
+import pandas as pd 
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+data=pd.read_csv('petrol_consumption.csv')
+data.plot()
+data.plot(x='Petrol_tax',y='Average_income',style='*')
+f1=data['Petrol_tax'].values.reshape(1,-1)
+f2=data['Average_income'].values.reshape(1,-1)
+regression=LinearRegression()
+regression.fit(f1,f2)
+z=regression.intercept_
+plt.plot(z)
+plt.show()
+
+# Impelementation of Clustring Kmeans
+
+# import pandas as pd 
+# import numpy as np
+# from sklearn.cluster import KMeans
+# data=pd.read_csv('petrol_consumption.csv')
+# data.describe()
+# f1=data['Petrol_tax'].values
+# f2=data['Average_income'].values
+# x = np.matrix((f1,f2))
+# kmeans = KMeans(n_clusters=2).fit(x)
+# print(kmeans.labels_)
+
+
+# Impelementation of matplotlib
+
+# import matplotlib.pyplot as plt
+# plt.plot([1,2,3,4,5],'g*',label='greenstars')
+# plt.show()
+# plt.figure(figsize=(10,7)) # 10 is width, 7 is height
+# plt.plot([1,2,3,4,5], [1,2,3,4,10], 'go', label='GreenDots')  # green dots
+# plt.plot([1,2,3,4,5], [2,3,4,5,12], 'b*', label='Bluestars')  # blue stars
+# plt.title('A Simple Scatterplot')  
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.xlim(0, 6)
+# plt.ylim(0, 12)
+# plt.legend(loc='best')
+# plt.show()
