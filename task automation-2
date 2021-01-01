@@ -1,0 +1,5 @@
+import pyautogui
+pyautogui.click((pyautogui.locateCenterOnScreen('4.png')))
+pyautogui.click((pyautogui.locateCenterOnScreen('mul.png')))
+pyautogui.click((pyautogui.locateCenterOnScreen('3.png')))
+pyautogui.press('enter')
